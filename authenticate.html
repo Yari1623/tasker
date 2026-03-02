@@ -15,53 +15,60 @@
 
 
     <main>
-    <!-- FORMULAIRE D’INSCRIPTION -->
-  <form action="#" method="post" aria-labelledby="inscription-title" aria-describedby="inscription-desc">
-    <fieldset>
-      <legend id="inscription-title">Inscription</legend>
+    <!-- Formulaire connexion -->
+    <form id="loginFormBox" aria-labelledby="connexion-title">
+        <fieldset>
+            <legend id="connexion-title">Connexion</legend>
 
-      <label for="email-inscription">Email :</label>
-      <input type="email" id="email-inscription" name="email"
-        required maxlength="50" placeholder="exemple : adresse@gmail"
-        aria-required="true" aria-label="adresse email">
+            <label for="email-login">Email :</label>
+            <input type="email" id="email-login" name="email"
+                required maxlength="50"
+                placeholder="exemple : adresse@gmail.com">
 
-      <label for="password-inscription">Mot de passe :</label>
-      <input type="password" id="password-inscription" name="password"
-        required minlength="12" maxlength="20"
-        placeholder="exemple : mot de passe"
-        aria-required="true" aria-label="mot de passe entre 12 et 20 caractères">
+            <label for="password-login">Mot de passe :</label>
+            <input type="password" id="password-login" name="password"
+                required minlength="12" maxlength="20"
+                placeholder="Votre mot de passe">
 
-         <label for="password-inscription">Confirmation du mot de passe:</label>
-      <input type="password" id="password-inscription" name="password"
-        required minlength="12" maxlength="20"
-        placeholder="exemple : mot de passe"
-        aria-required="true" aria-label="mot de passe entre 12 et 20 caractères">
+            <button type="submit">Connexion</button>
 
-        
+            <p class="switch-text">
+                Pas encore de compte ?
+                <span id="showRegisterForm">Créer un compte</span>
+            </p>
+        </fieldset>
+    </form>
 
-      <button type="submit" aria-label="créer un nouveau compte">Créer un compte</button>
-    </fieldset>
-  </form>
 
-  <!-- FORMULAIRE DE CONNEXION -->
-  <form action="#" method="post" aria-labelledby="connexion-title">
-    <fieldset>
-      <legend id="connexion-title">Connexion</legend>
+    <!-- Formulaire inscription -->
+    <form id="registerFormBox" aria-labelledby="inscription-title">
+        <fieldset>
+            <legend id="inscription-title">Inscription</legend>
 
-      <label for="email-connexion">Email :</label>
-      <input type="email" id="email-connexion" name="email"
-        required maxlength="50" placeholder="exemple : adresse@gmail"
-        aria-required="true">
+            <label for="email-register">Email :</label>
+            <input type="email" id="email-register" name="email"
+                required maxlength="50"
+                placeholder="exemple : adresse@gmail.com">
 
-      <label for="password-connexion">Mot de passe :</label>
-      <input type="password" id="password-connexion" name="password"
-        required minlength="12" maxlength="20"
-        placeholder="exemple : mot de passe"
-        aria-required="true">
+            <label for="password-register">Mot de passe :</label>
+            <input type="password" id="password-register" name="password"
+                required minlength="12" maxlength="20"
+                placeholder="12 à 20 caractères">
 
-      <button type="submit" aria-label="se connecter à votre compte">Connexion</button>
-    </fieldset>
-  </form>
+            <label for="password-confirm-register">Confirmation mot de passe :</label>
+            <input type="password" id="password-confirm-register" name="passwordConfirmation"
+                required minlength="12" maxlength="20"
+                placeholder="Confirmez le mot de passe">
+
+            <button type="submit">Créer un compte</button>
+
+            <p class="switch-text">
+                Déjà un compte ?
+                <span id="showLoginForm">Se connecter</span>
+            </p>
+        </fieldset>
+    </form>
   </main>
 </body>
+<script src="authenticate.js" defer></script>
 </html>

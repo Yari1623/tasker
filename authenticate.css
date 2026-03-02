@@ -4,8 +4,15 @@ body {
 
 
 main{
-    min-height: 90vh;
-    background: #ffffff;
+    min-height: 80vh;
+background: #f8e6f8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  flex-wrap: wrap;
+
+  padding: 40px 20px;
 }
 header{
     
@@ -19,21 +26,19 @@ header{
 
 /* Le fieldset (boîte principale) */
 fieldset {
-  width: 450px;
+   width: 420px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  padding: 20px;
-  margin: auto;
-  margin-bottom: 30px;
-  border: 2px solid #c05151;
-  border-radius: 16px;
-  background-color: white;
-  box-shadow: 10px 10px 10px rgba(211, 52, 46, 0.349);
+  padding: 30px;
+  border: none;
+  border-radius: 20px;
 
-  /*effet de flou derrier le fieldset */
-   backdrop-filter: blur(4px);
-  animation: fadeIn 1s ease;
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(10px);
+
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+
+  animation: fadeIn 0.8s ease;
 }
 
 /*Animation d'apparition  Keyframe sert a definir les etape de l'animation dans ce cas apparition du fielset*/
@@ -113,3 +118,49 @@ button:active {
   transform: translateY(0);
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
 }
+
+@media (max-width: 1024px) {
+  main {
+    gap: 25px;
+    padding: 30px 15px;
+  }
+
+  fieldset {
+    width: 360px;
+  }
+}
+
+@media (max-width: 768px) {
+
+  main {
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+    padding: 20px;
+  }
+
+  fieldset {
+    width: 100%;
+    max-width: 400px;
+    padding: 25px;
+  }
+
+  header {
+    height: auto;
+    padding: 15px 0;
+  }
+
+  legend {
+    font-size: 1.3em;
+  }
+
+  input {
+    font-size: 0.9em;
+  }
+
+  button {
+    font-size: 0.95em;
+  }
+}
+
+
