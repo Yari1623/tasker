@@ -1,0 +1,67 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  display: flex;
+  height: 10vh;
+  text-align: center;
+  justify-content: space-around;
+  background: linear-gradient(135deg, #ff9797, #ee9dee, #ff9797);
+  color: white;
+  box-shadow: 0px 4px 20px -2px gray;
+}
+#tasker {
+  font-size: 30px;
+  font-weight: bold;
+  color: rgb(255, 255, 255);
+  margin-left: auto;
+  margin-right: auto;
+}
+#all-list {
+  display: flex;
+  justify-content: space-around;
+}
+.list-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 10px;
+  text-align: center;
+}
+.task-list {
+  margin-top: 20px;
+  background-color: rgb(241, 241, 241);
+  width: 30%;
+  height: 70vh;
+  box-shadow: 0px 4px 20px -2px gray;
+  border: solid 1px rgb(100, 100, 100);
+  border-radius: 5%;
+}
+.task {
+  background-color: white;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0px 4px 3px -2px gray;
+}
+footer {
+  display: flex;
+  height: 10vh;
+  text-align: center;
+  justify-content: space-around;
+  background: linear-gradient(135deg, #ff9797, #ee9dee, #ff9797);
+  color: white;
+    box-shadow: 0px 4px 20px -2px gray;
+}
+#footer {
+  font-size: 30px;
+  font-weight: bold;
+  color: white;
+  margin-left: auto;
+  margin-right: auto;
+}
+main {
+  height: 80vh;
+  background-color: rgb(248, 204, 230);
+}
