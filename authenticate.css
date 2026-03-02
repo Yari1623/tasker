@@ -1,0 +1,115 @@
+body {
+  margin: 0;
+}
+
+
+main{
+    min-height: 90vh;
+    background: #ffffff;
+}
+header{
+    
+    display: flex;
+    height: 10vh;
+    text-align: center;
+    justify-content: space-around;
+    background: linear-gradient(135deg, #ff9797, #ee9dee, #ff9797);
+    color: white;
+}
+
+/* Le fieldset (boîte principale) */
+fieldset {
+  width: 450px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 20px;
+  margin: auto;
+  margin-bottom: 30px;
+  border: 2px solid #c05151;
+  border-radius: 16px;
+  background-color: white;
+  box-shadow: 10px 10px 10px rgba(211, 52, 46, 0.349);
+
+  /*effet de flou derrier le fieldset */
+   backdrop-filter: blur(4px);
+  animation: fadeIn 1s ease;
+}
+
+/*Animation d'apparition  Keyframe sert a definir les etape de l'animation dans ce cas apparition du fielset*/
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Titre */
+legend {
+  font-weight: bold;
+  font-size: 1.5em;
+   background: linear-gradient(135deg, #c54f4f, #ad2828, #c54f4f);
+    background-clip: text;
+    color: #ffffff00;
+  text-align: center;
+
+  margin-bottom: 10px;
+}
+
+/* Champs */
+label {
+   font-weight: 500;
+  color: #000000;
+  margin-top: 5px;
+
+}
+
+input {
+  padding: 10px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 0.95em;
+  transition: all 0.25s ease;
+  background-color: #f9fafb;
+}
+
+input:focus {
+  outline: none;
+  border-color: #818cf8;
+  box-shadow: 0 0 8px rgba(129, 140, 248, 0.4);
+  background-color: #ffffff;
+}
+
+
+.CheckBox_Form{
+    margin-bottom: 15px;
+}
+
+/* Bouton */
+button {
+  margin-top: 10px;
+  padding: 10px;
+  background:#c05151;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1em;
+ transition: transform 0.15s ease, box-shadow 0.2s ease;
+
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 12px rgba(139, 139, 139, 0.4);
+}
+
+button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tasker</title>
+    <link rel="stylesheet" href="authenticate.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>Tasker</h1>
+    </header>
+
+
+    <main>
+    <!-- FORMULAIRE D’INSCRIPTION -->
+  <form action="#" method="post" aria-labelledby="inscription-title" aria-describedby="inscription-desc">
+    <fieldset>
+      <legend id="inscription-title">Inscription</legend>
+
+      <label for="email-inscription">Email :</label>
+      <input type="email" id="email-inscription" name="email"
+        required maxlength="50" placeholder="exemple : adresse@gmail"
+        aria-required="true" aria-label="adresse email">
+
+      <label for="password-inscription">Mot de passe :</label>
+      <input type="password" id="password-inscription" name="password"
+        required minlength="12" maxlength="20"
+        placeholder="exemple : mot de passe"
+        aria-required="true" aria-label="mot de passe entre 12 et 20 caractères">
+
+         <label for="password-inscription">Confirmation du mot de passe:</label>
+      <input type="password" id="password-inscription" name="password"
+        required minlength="12" maxlength="20"
+        placeholder="exemple : mot de passe"
+        aria-required="true" aria-label="mot de passe entre 12 et 20 caractères">
+
+        
+
+      <button type="submit" aria-label="créer un nouveau compte">Créer un compte</button>
+    </fieldset>
+  </form>
+
+  <!-- FORMULAIRE DE CONNEXION -->
+  <form action="#" method="post" aria-labelledby="connexion-title">
+    <fieldset>
+      <legend id="connexion-title">Connexion</legend>
+
+      <label for="email-connexion">Email :</label>
+      <input type="email" id="email-connexion" name="email"
+        required maxlength="50" placeholder="exemple : adresse@gmail"
+        aria-required="true">
+
+      <label for="password-connexion">Mot de passe :</label>
+      <input type="password" id="password-connexion" name="password"
+        required minlength="12" maxlength="20"
+        placeholder="exemple : mot de passe"
+        aria-required="true">
+
+      <button type="submit" aria-label="se connecter à votre compte">Connexion</button>
+    </fieldset>
+  </form>
+  </main>
+</body>
+</html>
