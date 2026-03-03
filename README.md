@@ -16,8 +16,8 @@ installation:
 
 
 lancement:
-            -node server.js dans le terminal
-
+            -node server.js pour dev dans le terminal
+            -npm start production
 
 ----------------------------------------------------------------------------------------------------
 
