@@ -18,11 +18,39 @@ showRegisterForm.addEventListener('click', () => {
 console.log(loginFormBox);
 
 //register
+registerFormBox.addEventListener('submit', async (event) => {
+    event.preventDefault();
+
+    const email = document.getElementById("email-register").value;
+    const password = document.getElementById("password-register").value;
+
+    try{
+        const response = await fetch('http://localhost:5000/api/auth/register', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ mail: email, password })
+        });
+        
+        const data = await response.json();
+        
+        if(response.ok){
+            alert(data.message || 'Compte crée');
+            registerFormBox.style.display = 'none';
+            loginFormBox.style.display = 'block';
+        }else{
+
+         alert(data.message || "Erreur lors de la création du compte.");
+        }
+    } catch (error) {
+        console.error(error);
+        alert("Erreur serveur, impossible de créer le compte.");
+    }
+});
 
 
 
 //login
-loginFormBox.addEventListener('submit', (event) => {
+loginFormBox.addEventListener('submit', async (event) => {
     event.preventDefault();
 
     const email = document.getElementById("email-login").value;
@@ -31,7 +59,7 @@ loginFormBox.addEventListener('submit', (event) => {
     fetch('http://localhost:5000/api/auth/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ mail: email, password }) // mail = attendu par backend
+        body: JSON.stringify({ mail: email, password }) 
     })
     .then(response => response.json())
     .then(data => {
@@ -39,7 +67,7 @@ loginFormBox.addEventListener('submit', (event) => {
         if (data.token) {
             // Stocker le token JWT
             localStorage.setItem("token", data.token);
-            window.location.href = "dashboard.html"; // redirection après login
+            window.location.href = "/dashboard"; 
         } else {
             alert(data.message);
         }
