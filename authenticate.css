@@ -20,22 +20,20 @@ header{
     height: 10vh;
     text-align: center;
     justify-content: space-around;
-    background: linear-gradient(135deg, #ff9797, #ee9dee, #ff9797);
+    background: #ff9797;
     color: white;
 }
 
-/* Le fieldset (boîte principale) */
+/* Le fieldset (boîte principale) des formulaires */
 fieldset {
    width: 420px;
   display: flex;
   flex-direction: column;
   padding: 30px;
-  border: none;
   border-radius: 20px;
-
   background: rgba(255, 255, 255, 0.75);
   backdrop-filter: blur(10px);
-
+  border: 2px solid #f83f3f;
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
 
   animation: fadeIn 0.8s ease;
@@ -57,7 +55,7 @@ fieldset {
 legend {
   font-weight: bold;
   font-size: 1.5em;
-   background: linear-gradient(135deg, #c54f4f, #ad2828, #c54f4f);
+   background: #f83f3f;
     background-clip: text;
     color: #ffffff00;
   text-align: center;
@@ -98,7 +96,7 @@ input:focus {
 button {
   margin-top: 10px;
   padding: 10px;
-  background:#c05151;
+  background:#f83f3f;
   color: white;
   border: none;
   border-radius: 10px;
@@ -111,14 +109,26 @@ button {
 
 button:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 12px rgba(139, 139, 139, 0.4);
+  box-shadow: 0 8px 12px #e77575;
 }
 
 button:active {
   transform: translateY(0);
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  background: #dd6f8a;
 }
 
+#registerFormBox {
+    display: none;
+}
+
+#showRegisterForm, #showLoginForm {
+    cursor: pointer;
+    color: blue;
+    text-decoration: underline;
+}
+
+
+/* tablette*/
 @media (max-width: 1024px) {
   main {
     gap: 25px;
@@ -130,6 +140,7 @@ button:active {
   }
 }
 
+/*mobile*/
 @media (max-width: 768px) {
 
   main {
