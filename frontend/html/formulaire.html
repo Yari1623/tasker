@@ -1,34 +1,38 @@
-                                    <!DOCTYPE html>
-                                    <html lang="en">
-                                    <head>
-                                        <meta charset="UTF-8">
-                                        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                                        <title>Tasker - Formulaire</title>
-                                         <link rel="stylesheet" href="../styles.css">
-                                    </head>
-                                    <body>
-                                        <header>
-    <h1>Tasker</h1><button onclick="logout()">Déconnexion</button>
+<!DOCTYPE html>
+<html lang="en">
 
-        </header>
-                                        <main>
-<form action="/submit-task" method="POST">
-    <fieldset>
-    <legend>Ajouter une tâche</legend>
-    
-        <label for="title">Nom de la tâche:</label>
-        <input type="text" id="title" name="title" required>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tasker - Formulaire</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
 
-        <label for="description">Description:</label>
-        <textarea id="description" name="description" required></textarea>
+<body>
+    <header>
+        <h1>Tasker</h1> <button id="deco-btn" type="button">Déconnexion</button>
 
-        <button type="submit">Ajouter la tâche</button>
-        </fieldset>
-    </form>
+    </header>
+    <main>
+        <form action="/submit-task" method="POST">
+            <fieldset>
+                <legend>Ajouter une tâche</legend>
 
-                                        </main>
-                                        <footer>
-                                            <p>&copy; 2026 Tasker. All rights reserved.</p>
-                                        </footer>
-                                    </body>
-                                    </html>
+                <label for="title">Nom de la tâche:</label>
+                <input type="text" id="title" name="title" required>
+
+                <label for="description">Description:</label>
+                <textarea id="description" name="description" required></textarea>
+
+                <button type="submit">Ajouter la tâche</button>
+            </fieldset>
+        </form>
+
+    </main>
+    <footer>
+        <p>&copy; 2026 Tasker. All rights reserved.</p>
+    </footer>
+</body>
+<script src="../js/logout.js" defer></script>
+
+</html>
