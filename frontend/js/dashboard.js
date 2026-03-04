@@ -1,20 +1,16 @@
-const token = sessionStorage.getItem("token");
-if (!token) {
-  window.location.href = "/authenticate";
-}
 
 const displayTask = (task) => {
   const todo = document.getElementById("to-do");
   const inprogress = document.getElementById("in-progress");
   const finish = document.getElementById("finish");
 
-  [toDoEl, inProgressEl, finishEl].forEach(
+  [todo, inprogress, finish].forEach(
     (col) => (col.nextElementSibling.innerHTML = ""),
   );
 
   task.forEach((task) => {
     const p = document.createElement("p");
-    p.className("task");
+    p.className="task";
     p.textContent = task.name;
     switch (task.status) {
       case 0:
@@ -33,7 +29,7 @@ const displayTask = (task) => {
 const getTask = async () => {
   try {
     const response = await fetch("http://localhost:5000/api/tasks/tasks", {
-      header: { Authorization: `Bearer ${token}` },
+      
     });
 
     const task = await response.json();

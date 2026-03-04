@@ -63,7 +63,7 @@ export const login = async (req,res) => {
             maxAge: 24 * 60 * 60 * 1000 //1d
         });
         res.json({
-            message : "Connexion réussie", token
+            message : "Connexion réussie", token: token
         })
     } catch (error) {
         console.error('erreur login', error.message);
