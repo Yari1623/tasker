@@ -1,7 +1,7 @@
 import mysql2 from 'mysql2/promise';
 import dotenv from 'dotenv';
 
-dotenv.config(); // ← Doit être au tout début
+dotenv.config();
 
 let db;
 
@@ -18,11 +18,11 @@ try {
     });
 
     const connection = await db.getConnection();
-    console.log('✅ Connexion réussie à la BDD!');
+    console.log('|||connexion réussie à la BDD|||');
     connection.release();
 
 } catch (error) {
-    console.error('❌ Erreur:', error.message);
+    console.error('Erreur:', error.message);
     process.exit(1);
 }
 

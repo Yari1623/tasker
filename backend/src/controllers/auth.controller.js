@@ -61,6 +61,8 @@ export const login = async (req,res) => {
             sameSite: 'strict',
             maxAge: 24 * 60 * 60 * 1000 //1d
         });
+        //stockage token dans session
+        sessionStorage.setItem('token', JSON.stringify(token));
 
         res.json({
             message : "Connexion réussie", token
