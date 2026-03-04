@@ -14,17 +14,14 @@
 
     </header>
     <main>
-        <form action="/submit-task">
+        <form>
             <fieldset>
                 <legend>Ajouter une tâche</legend>
 
                 <label for="title">Nom de la tâche:</label>
                 <input type="text" id="title" name="title" required>
 
-                <label for="description">Description:</label>
-                <textarea id="description" name="description" required></textarea>
-
-                <button type="submit">Ajouter la tâche</button>
+                <button onclick="createTask()">Ajouter la tâche</button>
             </fieldset>
         </form>
 
