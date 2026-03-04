@@ -1,3 +1,9 @@
+const addbtn = document.getElementById("add-btn");
+addbtn.addEventListener('click', () => {
+    window.location.href = "/formulaire";
+}
+)
+
 const displayTask = (tasks) => {
   const todo = document.getElementById("to-do");
   const inprogress = document.getElementById("in-progress");
@@ -16,7 +22,7 @@ const displayTask = (tasks) => {
       <p>${task.name}</p>
       <div class="btn_action">
       <button onclick="deleteTask(${task.id})">Supprimer</button>
-      <button id="update-btn" onclick="updateTask(${task.id},${task.status})">--></button>
+      <button class="update-btn" onclick="updateTask(${task.id},${task.status})">--></button>
         
       </div>
     `;
@@ -30,9 +36,7 @@ const displayTask = (tasks) => {
         break;
       case 2:
         finish.nextElementSibling.appendChild(div)
-        let btn = document.getElementById('update-btn')
-        btn.style.display='none'
-        ;
+         div.querySelector('.update-btn').style.display = 'none';
         break;
     }
   });
@@ -54,25 +58,6 @@ const getTask = async () => {
     console.error(error);
   }
 };
-
-
-const deleteTask = async(id)=> {
-
-   try {
-    console.log(id);
-    const response = await fetch(`http://localhost:5000/api/tasks/deletetasks/${id}`, {
-      method: 'DELETE',
-            headers: { 'Content-Type': 'application/json' },
-            credentials: 'include',
-            body: JSON.stringify({ id })
-    });
-    const task = await response.json();
-    
-     } catch (error) {
-    console.error(error);
-  }
-};
-
 const updateTask = async(id , CurrentStatus) => {
     let newStatus;
     if (CurrentStatus === 0) newStatus = 1;
@@ -95,11 +80,31 @@ const updateTask = async(id , CurrentStatus) => {
 
         const task = await response.json();
         console.log("Statut mis à jour", task);
-        displayTask(task);
+        await getTask();
         
     } catch (error) {
         
     }
 }
+
+const deleteTask = async(id)=> {
+
+   try {
+    console.log(id);
+    const response = await fetch(`http://localhost:5000/api/tasks/deletetasks/${id}`, {
+      method: 'DELETE',
+            headers: { 'Content-Type': 'application/json' },
+            credentials: 'include',
+            body: JSON.stringify({ id })
+    });
+    const task = await response.json();
+    displayTask(task);
+     } catch (error) {
+    console.error(error);
+    
+  }
+};
+
+
 
 getTask();
