@@ -43,10 +43,10 @@ export const deleteTask = async (id) => {
 }
 }
 
-export const updateTask = async (id, {name , status}) => {
+export const updateTask = async (id, { status}) => {
     try {
-        await db.query("UPDATE task SET name = ?, status = ? WHERE id = ?",
-            [name, status, id]
+        await db.query("UPDATE task SET status = ? WHERE id = ?",
+            [ status, id]
         )
     } catch (error) {
         console.error("erreur updateTask", error.message);

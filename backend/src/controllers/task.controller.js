@@ -46,14 +46,13 @@ export const editTask = async (req, res)=>{
     try{
         const {id}= req.params;
         const {name, status} = req.body;
-        await updateTask (id,{name, status});
+        await updateTask (id,{status});
         res.json ({message: "tache modifiée"});
     }catch(error){
         console.error(error);
         res.status(500).json({message: "Erreur serveur (editTask)"})
     }
 };
-
 //supprimer tache
 export const removeTask = async (req, res) => {
     try {

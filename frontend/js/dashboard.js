@@ -16,7 +16,7 @@ const displayTask = (tasks) => {
       <p>${task.name}</p>
       <div class="btn_action">
       <button onclick="deleteTask(${task.id})">Supprimer</button>
-      <button onclick="editTask">--></button>
+      <button id="update-btn" onclick="updateTask(${task.id},${task.status})">--></button>
         
       </div>
     `;
@@ -29,7 +29,10 @@ const displayTask = (tasks) => {
         inprogress.nextElementSibling.appendChild(div);
         break;
       case 2:
-        finish.nextElementSibling.appendChild(div);
+        finish.nextElementSibling.appendChild(div)
+        let btn = document.getElementById('update-btn')
+        btn.style.display='none'
+        ;
         break;
     }
   });
@@ -39,7 +42,7 @@ const displayTask = (tasks) => {
 const getTask = async () => {
   try {
    
-    const test=localStorage.getItem("userID")
+    const userID=localStorage.getItem("userID")
     console.log(userID);
     const response = await fetch(`http://localhost:5000/api/tasks/tasks/${userID}`, {
       
@@ -61,7 +64,7 @@ const deleteTask = async(id)=> {
       method: 'DELETE',
             headers: { 'Content-Type': 'application/json' },
             credentials: 'include',
-
+            body: JSON.stringify({ id })
     });
     const task = await response.json();
     
@@ -70,5 +73,33 @@ const deleteTask = async(id)=> {
   }
 };
 
+const updateTask = async(id , CurrentStatus) => {
+    let newStatus;
+    if (CurrentStatus === 0) newStatus = 1;
+    else if (CurrentStatus === 1) newStatus = 2;
+    else return;
+    console.log(id , newStatus)
+    try {
+        const response = await fetch(`http://localhost:5000/api/tasks/puttasks/${id}`, {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            credentials: 'include',
+            body: JSON.stringify({  
+                status: newStatus 
+            })
+        });
+
+        if (!response.ok) {
+            throw new Error('Erreur lors de la mise à jour');
+        }
+
+        const task = await response.json();
+        console.log("Statut mis à jour", task);
+        displayTask(task);
+        
+    } catch (error) {
+        
+    }
+}
 
 getTask();
