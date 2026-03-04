@@ -14,9 +14,9 @@ const displayTask = (tasks) => {
     // texte + boutons
     div.innerHTML = `
       <span>${task.name}</span>
-      <div class="actions">
-        <button onclick="editTask(${index})">Modif</button>
-        <button onclick="deleteTask(${index})">Suppr</button>
+      <div class="btn_action">
+        <button onclick="editTask(${index})">Modifier</button>
+        <button onclick="deleteTask(${index})">Supprimer</button>
       </div>
     `;
 
