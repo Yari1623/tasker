@@ -28,7 +28,10 @@ const displayTask = (task) => {
 
 const getTask = async () => {
   try {
-    const response = await fetch("http://localhost:5000/api/tasks/tasks", {
+   
+    const test=localStorage.getItem("userID")
+    console.log(test);
+    const response = await fetch(`http://localhost:5000/api/tasks/tasks/${test}`, {
       
     });
 
