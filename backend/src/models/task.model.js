@@ -1,4 +1,4 @@
-import db from "../config/db";
+import db from "../config/db.js";
 
 export const getAllTasks = async () => {
     try {
@@ -10,10 +10,20 @@ export const getAllTasks = async () => {
     }
 }
 
-export const createTask = async ({ name }) => {
+export const getTasksByUserId = async (user_id) => {
     try {
-        await db.query("INSERT INTO task (name) VALUES (?)",
-            [name]
+        const rows = await db.query("SELECT * FROM task WHERE user_id = ?", [user_id]);
+        return rows[0];
+    } catch (error) {
+        console.error("erreur getTasksByUserId", error.message);
+        throw error;
+    }
+}
+
+export const createTask = async ({ name, user_id }) => {
+    try {
+        await db.query("INSERT INTO task (name, status , user_id) VALUES (?, ?, ?)",
+            [name, false, user_id]
         )
     } catch (error) {
         console.error("erreur createTask", error.message);
@@ -23,7 +33,7 @@ export const createTask = async ({ name }) => {
 
 export const deleteTask = async (id) => {
     try {
-        const [result] = await db.query("DELETE FROM task WHERE mail = ?",
+        const [result] = await db.query("DELETE FROM task WHERE id = ?",
             [id]
         )
         return result.affectedRows > 0;
@@ -33,10 +43,10 @@ export const deleteTask = async (id) => {
 }
 }
 
-export const updateTask = async (id, name) => {
+export const updateTask = async (id, {name , status}) => {
     try {
-        await db.query("UPDATE task SET name = ? WHERE id = ?",
-            [name, id]
+        await db.query("UPDATE task SET name = ?, status = ? WHERE id = ?",
+            [name, status, id]
         )
     } catch (error) {
         console.error("erreur updateTask", error.message);

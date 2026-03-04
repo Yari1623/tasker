@@ -1,9 +1,9 @@
-import { getAllTasks, createTask, updateTask, deleteTask } from "../models/task.model.js";
+import { getAllTasks, createTask, updateTask, deleteTask, getTasksByUserId } from "../models/task.model.js";
 // recuperer les taches
 export const fetchTasks = async (req, res)=>{
     try{
        
-        const task =  await getAllTasks(userID);
+        const task =  await getAllTasks();
         res.json(task);
     } catch(error) {
         console.error(error);
@@ -11,13 +11,29 @@ export const fetchTasks = async (req, res)=>{
     }
 };
 
+export const fetchTaskById = async (req, res) => {
+    try {
+        const {id} = req.params;
+        const task = await getTasksByUserId(id);
+        console.log(id)
+        if (!task) {
+            return res.status(404).json({ message: 'task non trouvée'})
+        }
+        res.json(task);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({message: "Erreur serveur (fetchTaskById)"})
+    }
+}
+
 
 //creer une tache
 export const addTask = async (req, res)=> {
     try{
-
-        const  {name, status} = req.body;
-        const id = await createTask({name, userID,status: status ?? 0});
+        const  {name} = req.body;
+        const id = req.params.id;
+        await createTask({name, user_id: id});
+        console.log(id , name)
         res.status(201).json ({message:"Tache créée", id})
     } catch (error){
         console.error(error);
@@ -31,7 +47,7 @@ export const editTask = async (req, res)=>{
         const {id}= req.params;
         const {name, status} = req.body;
         await updateTask (id,{name, status});
-        res.json ({message: "tache modifier"});
+        res.json ({message: "tache modifiée"});
     }catch(error){
         console.error(error);
         res.status(500).json({message: "Erreur serveur (editTask)"})

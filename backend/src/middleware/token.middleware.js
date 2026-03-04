@@ -2,7 +2,7 @@ import cookieParser from 'cookie-parser';
 import jsw from 'jsonwebtoken';
 
 export const verifyToken = (req, res, next) => {
-    const token = req.cookies['acces_token'];
+    const token = req.cookies['token'];
     if (!token) {
         return res.status(401).json({ message : "token manquant"});
     }

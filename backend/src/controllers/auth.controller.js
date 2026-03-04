@@ -52,18 +52,16 @@ export const login = async (req,res) => {
         },
             process.env.JWT_SECRET,
         {
-            expiresIn: '10s'
+            expiresIn: '1h'
         }
     );
+
         //stockage token dans cookies
         res.cookie('token', token , {
             httpOnly:true,
             sameSite: 'strict',
             maxAge: 24 * 60 * 60 * 1000 //1d
         });
-        //stockage token dans session
-        sessionStorage.setItem('token', JSON.stringify(token));
-
         res.json({
             message : "Connexion réussie", token
         })
