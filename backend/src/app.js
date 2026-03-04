@@ -7,6 +7,7 @@ import cors from "cors";
 import { fileURLToPath } from "url";
 import path from "path";
 
+import tasksRoutes from "./routes/task.routes.js";
 import authRoutes from './routes/auth.routes.js'
 import { verifyToken } from "./middleware/token.middleware.js";
 
@@ -21,7 +22,7 @@ app.use(cors());
 
 //auth
 app.use('/api/auth' , authRoutes)
-
+app.use('/api/tasks' , verifyToken , tasksRoutes)
 //route front
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);

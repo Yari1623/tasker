@@ -1,5 +1,4 @@
-
-
+import { getAllTasks, createTask, updateTask, deleteTask } from "../models/task.model.js";
 // recuperer les taches
 export const fetchTasks = async (req, res)=>{
     try{
