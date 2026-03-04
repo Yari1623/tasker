@@ -70,6 +70,9 @@ header {
   min-height: 80%;
 }
 .task {
+    display: flex;
+  justify-content: space-around;
+  align-items: center;
   text-align: center;
   background-color: white;
   margin: 10px;
@@ -78,6 +81,8 @@ header {
   box-shadow: 0px 4px 3px -2px gray;
   transition: all 0.3s ease;
 }
+
+
 .task:hover {
   transform: translateY(-1px);
   box-shadow: 0px 6px 5px -2px gray;
@@ -117,3 +122,5 @@ main {
 .task-name::-webkit-scrollbar {
   display: none;
 }
+
+

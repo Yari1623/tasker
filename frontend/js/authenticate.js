@@ -67,6 +67,7 @@ loginFormBox.addEventListener('submit', async (event) => {
         if (data.token) {
             // Stocker le token JWT
             localStorage.setItem("token", data.token);
+            localStorage.setItem("userID", data.id);
             window.location.href = "/dashboard"; 
         } else {
             alert(data.message);
