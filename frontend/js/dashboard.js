@@ -1,30 +1,39 @@
-
-const displayTask = (task) => {
+const displayTask = (tasks) => {
   const todo = document.getElementById("to-do");
   const inprogress = document.getElementById("in-progress");
   const finish = document.getElementById("finish");
 
   [todo, inprogress, finish].forEach(
-    (col) => (col.nextElementSibling.innerHTML = ""),
+    (col) => (col.nextElementSibling.innerHTML = "")
   );
 
-  task.forEach((task) => {
-    const p = document.createElement("p");
-    p.className="task";
-    p.textContent = task.name;
+  tasks.forEach((task, index) => {
+    const div = document.createElement("div");
+    div.className = "task";
+
+    // texte + boutons
+    div.innerHTML = `
+      <span>${task.name}</span>
+      <div class="actions">
+        <button onclick="editTask(${index})">Modif</button>
+        <button onclick="deleteTask(${index})">Suppr</button>
+      </div>
+    `;
+
     switch (task.status) {
       case 0:
-        todo.nextElementSibling.appendChild(p);
+        todo.nextElementSibling.appendChild(div);
         break;
       case 1:
-        inprogress.nextElementSibling.appendChild(p);
+        inprogress.nextElementSibling.appendChild(div);
         break;
       case 2:
-        finish.nextElementSibling.appendChild(p);
+        finish.nextElementSibling.appendChild(div);
         break;
     }
   });
 };
+;
 
 const getTask = async () => {
   try {
