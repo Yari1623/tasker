@@ -40,6 +40,17 @@
     <footer>
       <p>&copy; 2026 Tasker. All rights reserved.</p>
     </footer>
+
+ <div id="modal-overlay">
+  <div id="modal">
+    <h2>Modifier la tâche</h2>
+    <input type="text" id="modalName" placeholder="Nouveau nom" />
+    <div class="modal-btn">
+      <button onclick="closeModal()">Annuler</button>
+      <button onclick="saveEdit()">Sauvegarder</button>
+    </div>
+  </div>
+</div>
   </body>
   <script src="../js/logout.js" defer></script>
   <script src="../js/dashboard.js" ></script>

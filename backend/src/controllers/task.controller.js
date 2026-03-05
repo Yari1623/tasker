@@ -1,4 +1,4 @@
-import { getAllTasks, createTask, updateTask, deleteTask, getTasksByUserId } from "../models/task.model.js";
+import { getAllTasks, createTask, updateTask, deleteTask, getTasksByUserId, updateTaskName } from "../models/task.model.js";
 // recuperer les taches
 export const fetchTasks = async (req, res)=>{
     try{
@@ -41,7 +41,7 @@ export const addTask = async (req, res)=> {
     }
 };
 
-// changer un tache
+// changer une tache
 export const editTask = async (req, res)=>{
     try{
         const {id}= req.params;
@@ -53,6 +53,24 @@ export const editTask = async (req, res)=>{
         res.status(500).json({message: "Erreur serveur (editTask)"})
     }
 };
+
+//changer le nom d'une tache
+export const editTaskName = async (req, res) =>{
+    try{
+        const {id} = req.params;
+        const {name} = req.body;
+        if(!name || !name.trim ()) {
+            return res.status(400).json({message: "Le nom ne peut pas être vide"})
+        }
+
+        await updateTaskName(id, name);
+        res.json({message: "Nom de la tâche modifié"});
+    }catch(error){
+        console.error(error);
+        res.status(500).json({message: " Erreur serveur (editTaskName)"});
+    }
+};
+
 //supprimer tache
 export const removeTask = async (req, res) => {
     try {
