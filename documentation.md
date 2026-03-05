@@ -40,7 +40,7 @@ lancement:
 
 ### Déroulement d'une session
 
-### Utilisation de l'utilisation
+### L'utilisation
 
 ## Quelques précisions
 
