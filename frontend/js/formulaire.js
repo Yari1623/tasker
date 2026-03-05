@@ -8,7 +8,11 @@ backdash.addEventListener('click', () => {
 const createTask
  = async () => {
   try {
-   const name = document.getElementById("title").value;
+   const name = document.getElementById("title").value.trim();
+   if (name === "") {
+
+    return alert("Veuillez entrer un nom pour la tâche.");
+   }
     const userID = localStorage.getItem("userID")
     console.log(userID);
     const response = await fetch(`http://localhost:5000/api/tasks/addtasks/${userID}`, {
