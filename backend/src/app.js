@@ -42,6 +42,9 @@ app.get("/formulaire", verifyToken, (req, res) => {
     res.sendFile(path.join(__dirname, "../../frontend/html/formulaire.html"));
 });
 
-
+app.get("/logout" , (req, res) => {
+    res.clearCookie('token' , {path : '/'});
+    res.redirect('/');
+})
 
 export default app;
