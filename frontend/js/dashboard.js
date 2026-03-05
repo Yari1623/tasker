@@ -3,6 +3,20 @@ addbtn.addEventListener("click", () => {
   window.location.href = "/formulaire";
 });
 
+let currentEditId = null;
+
+const openModal = (id, name) => {
+  currentEditId = id;
+  document.getElementById('modalName').value = name;
+  document.getElementById('modal-overlay').style.display = 'flex';
+};
+
+const closeModal = () => {
+  currentEditId = null;
+  document.getElementById('modal-overlay').style.display = 'none';
+};
+
+
 const displayTask = (tasks) => {
   const todo = document.getElementById("to-do");
   const inprogress = document.getElementById("in-progress");
@@ -21,6 +35,7 @@ const displayTask = (tasks) => {
       <p>${task.name}</p>
       <div class="btn_action">
       <button  class="go-back-btn"onClick="goBackTask(${task.id},${task.status})"><--</button>
+      <button onclick="openModal(${task.id}, '${task.name}')">modifier</button>
       <button onclick="deleteTask(${task.id})">Supprimer</button>
       <button class="update-btn" onclick="updateTask(${task.id},${task.status})">--></button>
         
@@ -115,6 +130,32 @@ const goBackTask = async (id, CurrentStatus) => {
     const task = await response.json();
     console.log("Statut mis à jour", task);
     await getTask();
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+const saveEdit = async () => {
+  const newName = document.getElementById('modalName').value;
+
+  if (!newName.trim()) {
+    alert("Le nom ne peut pas être vide");
+    return;
+  }
+
+  try {
+    const response = await fetch(`http://localhost:5000/api/tasks/puttaskname/${currentEditId}`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      credentials: 'include',
+      body: JSON.stringify({ name: newName })
+    });
+
+    if (!response.ok) throw new Error('Erreur modification');
+
+    closeModal();
+    await getTask();
+
   } catch (error) {
     console.error(error);
   }

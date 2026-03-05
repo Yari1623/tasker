@@ -52,4 +52,16 @@ export const updateTask = async (id, { status}) => {
         console.error("erreur updateTask", error.message);
         throw error;
     }
+};
+
+
+export const updateTaskName = async (id, name) =>{
+    try{
+        await db.query("UPDATE task SET name = ?WHERE id = ?", [name,id])
+    }
+    catch (error){
+        console.error("erreur updateTaskName", error.message);
+        throw error;
+    }
+
 }
