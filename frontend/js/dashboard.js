@@ -98,7 +98,7 @@ const deleteTask = async(id)=> {
             body: JSON.stringify({ id })
     });
     const task = await response.json();
-    displayTask(task);
+    await getTask();
      } catch (error) {
     console.error(error);
     
