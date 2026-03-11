@@ -56,6 +56,9 @@ CREATE TABLE IF NOT EXISTS `user` (
   `id` int NOT NULL AUTO_INCREMENT,
   `mail` varchar(150) NOT NULL,
   `password` varchar(150) NOT NULL,
+  FOREIGN KEY (user_id) REFERENCES user(id)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE
   PRIMARY KEY (`id`),
   UNIQUE KEY `mail` (`mail`)
 ) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
