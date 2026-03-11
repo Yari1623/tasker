@@ -16,59 +16,41 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
 
---
--- Création et sélection de la base de données
---
 CREATE DATABASE IF NOT EXISTS `tasker` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;
 USE `tasker`;
 
 -- --------------------------------------------------------
 
---
--- Structure de la table `task`
---
-
 DROP TABLE IF EXISTS `task`;
+DROP TABLE IF EXISTS `user`;
+
+CREATE TABLE IF NOT EXISTS `user` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `mail` varchar(150) NOT NULL,
+  `password` varchar(150) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `mail` (`mail`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
 CREATE TABLE IF NOT EXISTS `task` (
   `id` int NOT NULL AUTO_INCREMENT,
   `user_id` int NOT NULL,
   `name` varchar(150) NOT NULL,
   `status` int NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `user_id` (`user_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
---
--- Déchargement des données de la table `task`
---
-
-INSERT INTO `task` (`id`, `user_id`, `name`, `status`) VALUES
-(1, 1, 'dsqddsfs', 2);
+  KEY `user_id` (`user_id`),
+  FOREIGN KEY (`user_id`) REFERENCES `user`(`id`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
---
--- Structure de la table `user`
---
-
-DROP TABLE IF EXISTS `user`;
-CREATE TABLE IF NOT EXISTS `user` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `mail` varchar(150) NOT NULL,
-  `password` varchar(150) NOT NULL,
-  FOREIGN KEY (user_id) REFERENCES user(id)
-        ON DELETE CASCADE
-        ON UPDATE CASCADE
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `mail` (`mail`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
---
--- Déchargement des données de la table `user`
---
-
 INSERT INTO `user` (`id`, `mail`, `password`) VALUES
 (1, 'test@mail.com', '$argon2id$v=19$m=65536,t=3,p=4$hAYCSAlfl1Qpey1zaw2WAA$7iTPKlvB7U68FjANkxBKo+lok1zV8TMwM4+7nYej74A');
+
+INSERT INTO `task` (`id`, `user_id`, `name`, `status`) VALUES
+(1, 1, 'dsqddsfs', 2);
 
 COMMIT;
 
